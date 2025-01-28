@@ -1,5 +1,5 @@
 package com.vcon.v1.apis.model;
-
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +14,8 @@ public class Salon {
     private String address;
     @Column
     private String nearby;
+    @Column(name = "image_urls")
+    private String imageUrls;
 
     public int getId() {
         return id;
@@ -45,5 +47,13 @@ public class Salon {
 
     public void setNearby(String nearby) {
         this.nearby = nearby;
+    }
+
+    public String getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(String imageUrls) {
+        this.imageUrls = imageUrls;
     }
 }

@@ -24,18 +24,32 @@ public class SalonServiceImpl implements SalonService {
     @Transactional
     @Override
     public Salon get(int id) {
-        return null;
+        return salonDao.get(id);
     }
 
     @Transactional
     @Override
     public void save(Salon salon) {
+        salonDao.save(salon);
 
     }
 
     @Transactional
     @Override
     public void delete(int id) {
-
+         salonDao.delete(id);
     }
+
+    @Transactional
+    @Override
+    public List<Salon> getSalonsByLocation(String address) {
+        return salonDao.getSalonsByLocation(address);
+    }
+
+    @Transactional
+    @Override
+    public void updateImageUrls(int id, String imageUrls) {
+        salonDao.updateImageUrls(id, imageUrls);
+    }
+
 }

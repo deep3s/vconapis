@@ -9,4 +9,7 @@ public interface SalonService {
     Salon get(int id);
     void save (Salon salon);
     void delete(int id);
+
+    List<Salon> getSalonsByLocation(String address);
+    void updateImageUrls(int id, String imageUrls);
 }

@@ -24,16 +24,43 @@ public class SalonDaoImpl implements SalonDao {
 
     @Override
     public Salon get(int id) {
-        return null;
+        Session currentSession = entityManager.unwrap(Session.class);
+        return currentSession.get(Salon.class, id);
     }
 
     @Override
     public void save(Salon salon) {
-
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.saveOrUpdate(salon);
     }
 
     @Override
     public void delete(int id) {
-
+        Session currentSession = entityManager.unwrap(Session.class);
+        Salon salon = currentSession.get(Salon.class, id);
+        if (salon != null) {
+            currentSession.delete(salon);
+        }
     }
+
+    @Override
+    public List<Salon> getSalonsByLocation(String address) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        // Use a LIKE query to match the address and find salons near the provided address
+        Query query = currentSession.createQuery("from Salon where address like :address", Salon.class);
+        query.setParameter("address", "%" + address + "%");
+        return query.getResultList();
+    }
+
+    @Override
+    public void updateImageUrls(int id, String imageUrls) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Salon salon = currentSession.get(Salon.class, id);
+        if (salon != null) {
+            salon.setImageUrls(imageUrls);
+            currentSession.update(salon);  // Update the salon with new imageUrls
+        }
+    }
+
+
 }
