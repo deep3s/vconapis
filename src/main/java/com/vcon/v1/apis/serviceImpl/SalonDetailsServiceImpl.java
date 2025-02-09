@@ -16,9 +16,9 @@ public class SalonDetailsServiceImpl {
 
     // Get a user by ID
     public Optional<SalonDetails> getSalonDetailsById(String id) {
-
         return salonDetailsRepository.findById(id);
     }
+
     public List<SalonDetails> getAllSalons() {
         return salonDetailsRepository.findAll();
     }
