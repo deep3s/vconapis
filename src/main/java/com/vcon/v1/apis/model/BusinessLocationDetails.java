@@ -22,7 +22,7 @@ public class BusinessLocationDetails {
 
     @Id
     private String id;
-    private BusinessLocationDetails locationDetails;
+    private BusinessLocationInfo locationInfo;
     private List<BusinessType> mainBusinessType;
     private List<BusinessType> secondaryBusinessTypes;
     private BusinessLocationAddress locationAddress;
