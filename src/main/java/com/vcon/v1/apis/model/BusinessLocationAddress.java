@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BusinessLocationAddress {
     private String address;
+    private String placeId;
+    private double lat;
+    private double lng;
     private String district;
     private String city;
     private String subDivision;
