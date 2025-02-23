@@ -20,5 +20,13 @@ public class BusinessLocationAddress {
     private String country;
     private String description;
 
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
     // Getters and Setters
 }

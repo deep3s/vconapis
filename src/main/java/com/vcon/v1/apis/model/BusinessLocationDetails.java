@@ -28,4 +28,8 @@ public class BusinessLocationDetails {
     private BusinessLocationAddress locationAddress;
     private BusinessLocationBillingDetails locationBillingDetails;
     private List<BusinessLocationTiming> locationTimings;
+
+    public BusinessLocationAddress getLocationAddress() {
+        return locationAddress;
+    }
 }
