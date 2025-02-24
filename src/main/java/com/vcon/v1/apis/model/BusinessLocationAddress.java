@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BusinessLocationAddress {
     private String address;
+    private String placeId;
+    private double lat;
+    private double lng;
     private String district;
     private String city;
     private String subDivision;
@@ -16,6 +19,14 @@ public class BusinessLocationAddress {
     private String postCode;
     private String country;
     private String description;
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
 
     // Getters and Setters
 }

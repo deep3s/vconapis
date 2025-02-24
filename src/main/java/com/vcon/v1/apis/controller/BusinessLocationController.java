@@ -52,5 +52,13 @@ public class BusinessLocationController {
         return businessLocationService.deleteBusinessLocation(id) ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @GetMapping("/search")
+    public List<BusinessLocationDetails> searchNearbyLocations(
+            @RequestParam double latitude,
+            @RequestParam double longitude,
+            @RequestParam double radius) {
+        return businessLocationService.searchNearbyLocations(latitude, longitude, radius);
+    }
+
 
 }
