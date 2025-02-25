@@ -16,7 +16,7 @@ public class CategoriesController {
     @Autowired
     CategoriesService categoryService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Categories> get() { return categoryService.get();};
 
     @GetMapping("/{id}")

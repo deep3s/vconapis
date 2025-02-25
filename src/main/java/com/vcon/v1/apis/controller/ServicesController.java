@@ -35,6 +35,7 @@ public class ServicesController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error creating salon: " + e.getMessage());
         }
     }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
         servicesService.delete(id);
