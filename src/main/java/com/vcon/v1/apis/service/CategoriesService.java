@@ -5,6 +5,7 @@ import com.vcon.v1.apis.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,19 @@ public class CategoriesService {
 
     // Get all categories
     public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+        Category allServicesCategory = new Category("All Services", "All Services from all categories");
+        allServicesCategory.setServices(new ArrayList<>());
+
+        // Loop through the list of categories
+        for (Category category : categories) {
+            // Add all services from the current category to the allServices list
+            allServicesCategory.getServices().addAll(category.getServices());
+        }
+
+        categories.add(0, allServicesCategory);
+
+        return categories;
     }
 
     // Create new category
