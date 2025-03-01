@@ -27,9 +27,9 @@ public class ServicesController {
     }
 
     @PostMapping("")
-    public ResponseEntity<String> save(@RequestBody Service service, @RequestParam Long categoryId) {
+    public ResponseEntity<String> save(@RequestBody Service service) {
         try {
-            servicesService.createService(service, categoryId);  // Call the service layer to save the salon
+            servicesService.createService(service);  // Call the service layer to save the salon
             return ResponseEntity.status(HttpStatus.CREATED).body("Services created successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error creating salon: " + e.getMessage());

@@ -23,7 +23,7 @@ public class ServicesService {
     }
 
     // Create new service
-    public Service createService(Service service, Long categoryId) {
+    public Service createService(Service service) {
         /*// Ensure category exists before setting it on the service
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new IllegalArgumentException("Category not found"));
