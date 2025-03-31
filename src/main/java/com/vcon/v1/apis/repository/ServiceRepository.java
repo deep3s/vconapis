@@ -1,7 +1,14 @@
 package com.vcon.v1.apis.repository;
 
+import com.vcon.v1.apis.entity.ServiceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.vcon.v1.apis.entity.Service;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-public interface ServiceRepository extends JpaRepository<Service, Long> {
+import java.util.List;
+
+public interface ServiceRepository extends JpaRepository<ServiceEntity, Long> {
+    @Query(nativeQuery = true, value = ":sqlQuery")
+    List<ServiceEntity> findByCategoryId(String sqlQuery);
 }
+

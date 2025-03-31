@@ -1,35 +1,35 @@
 package com.vcon.v1.apis.entity;
-
-
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Set;
 
 @Entity
-@Table(name="services")
-public class Service {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "packages")
+public class PackageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String name;
+
     private String description;
-    private String duration;
+
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    // Constructors, Getters, and Setters
-    public Service() {}
-
-    public Service(String name, String description, String duration, double price, Category category) {
-        this.name = name;
-        this.description = description;
-        this.duration = duration;
-        this.price = price;
-        this.category = category;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "package_services",
+            joinColumns = @JoinColumn(name = "package_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+    private Set<ServiceEntity> services; // This maps services to a package
 
     public Long getId() {
         return id;
@@ -63,12 +63,12 @@ public class Service {
         this.price = price;
     }
 
-    public String getDuration() {
-        return duration;
+    public Set<ServiceEntity> getServices() {
+        return services;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setServices(Set<ServiceEntity> services) {
+        this.services = services;
     }
+
 }
-
