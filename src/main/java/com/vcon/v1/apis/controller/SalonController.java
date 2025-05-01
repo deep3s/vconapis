@@ -47,6 +47,7 @@ public class SalonController {
     @PutMapping("/salons/{id}/imageUrls")
     public ResponseEntity<String> updateImageUrls(@PathVariable int id, @RequestParam String imageUrls) {
         try {
+
             salonService.updateImageUrls(id, imageUrls);
             return ResponseEntity.status(HttpStatus.OK).body("Image URLs updated successfully");
         } catch (Exception e) {
